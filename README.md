@@ -26,8 +26,8 @@ Il progetto è organizzato nelle seguenti cartelle e file:
 - Cartella ```CSS``` contenente il file per lo stile
 - File di configurazione di Webpack ```webpack.config.js```
 
-### File JS
-Il file JS prevede un codice in cui viene preso l'input inserito dall'utente e viene generato un evento dato dal click; per fare la richiesta API è stato utilizzato il metodo ```fetch```.
+### Script Javascript di origine 
+Il file con il codice di sviluppo contenuto nella cartella ```src``` contiene uno script in cui viene preso l'input inserito dall'utente e viene generato un evento dato dal click. Per fare la richiesta API è stato utilizzato il metodo ```fetch```.
 
 ```javascript
 function formatText(input) {
