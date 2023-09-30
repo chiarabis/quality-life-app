@@ -18,8 +18,15 @@ L'app è caratterizzata appunto da una ```searchBox```, costituita da un input i
 ![2](https://github.com/chiarabis/quality-life-app/assets/124071052/eca2e5ba-dd26-4a8f-b5b1-ecaf3a1d80ad)
 ![3](https://github.com/chiarabis/quality-life-app/assets/124071052/823f6c40-9c72-41e0-a26d-dd85aea848df)
 
+## Struttura del progetto
+Il progetto è organizzato nelle seguenti cartelle e file:
+- File ```index.html```
+- File ```bundle.js```: versione dello script Javascript ottimizzato con Webpack
+- Cartella ```src``` per visualizzare lo script di sviluppo contenuto nel file index.js
+- Cartella ```CSS``` contenente il file per lo stile
+- File di configurazione di Webpack ```webpack.config.js```
 
-## File JS
+### File JS
 Il file JS prevede un codice in cui viene preso l'input inserito dall'utente e viene generato un evento dato dal click; per fare la richiesta API è stato utilizzato il metodo ```fetch```.
 
 ```javascript
