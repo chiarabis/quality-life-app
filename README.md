@@ -22,7 +22,7 @@ L'app è caratterizzata appunto da una ```searchBox```, costituita da un input i
 Il progetto è organizzato nelle seguenti cartelle e file:
 - File ```index.html```
 - Cartella ```src``` per visualizzare lo script di sviluppo contenuto nel file index.js
-- Cartella ```dist``` per visualizzare la versione dello script ottimizzato con Webpack nel file ```bundle.js``` 
+- Cartella ```dist``` per visualizzare la versione dello script ottimizzato con Webpack nel file bundle.js 
 - Cartella ```CSS``` contenente il file per lo stile
 - File di configurazione di Webpack ```webpack.config.js```
 
