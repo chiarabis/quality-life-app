@@ -2,7 +2,7 @@
 ## Un'app che permette di ottenere informazioni riguardo la qualità della vita (Js advanced project)
 Il progetto prevede di realizzare un'applicazione che dia informazioni su diversi aspetti della qualità della vita. É un progetto di Javascript Advanced del master in Front-End Development di Start2Impact.
 
-![1](https://github.com/chiarabis/quality-life-app/assets/124071052/ef46628f-bfc2-4f02-b663-204df0cf2035)
+![1](https://github.com/chiarabis/quality-life-app/assets/124071052/babc9c09-045e-4fc9-9adb-394e8bfae197)
 
 
 ***
@@ -15,8 +15,8 @@ Una volta ricevuti i dati dal servizio esterno l’applicazione dovrà visualizz
 Come funziona l'applicazione?
 L'app è caratterizzata appunto da una ```searchBox```, costituita da un input in cui l'utente scrive del testo e da un bottone (un'icona freccia). Quando si preme il bottone, il sistema fa una chiamata all'API Teleport riportando come risposta in un div sottostante le informazioni inerenti alla città scelta. L'interfaccia è stata resa semplice e intuitiva: i dati che riportano i numeri, ```categories```, come il costo di vita, prezzo degli alloggi, sicurezza, etc., sono divisi in blocchi colorati per una migliore fruibilità e organizzazione, mentre il testo riguandante la ```description``` è mostrato come paragrafo semplice e al di sotto viene indicato il ```city-score```, cioè un punteggio assegnato alla città in base a tutti i dati sulla qualità della vita.
 
-![2](https://github.com/chiarabis/quality-life-app/assets/124071052/bcb1c0ae-041f-421a-b47a-315d7018d946)
-![3](https://github.com/chiarabis/quality-life-app/assets/124071052/52b760af-04da-47e6-a9e2-49e8a21c828f)
+![2](https://github.com/chiarabis/quality-life-app/assets/124071052/eca2e5ba-dd26-4a8f-b5b1-ecaf3a1d80ad)
+![3](https://github.com/chiarabis/quality-life-app/assets/124071052/823f6c40-9c72-41e0-a26d-dd85aea848df)
 
 
 ## File JS
