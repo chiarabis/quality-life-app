@@ -15,8 +15,9 @@ Una volta ricevuti i dati dal servizio esterno l’applicazione dovrà visualizz
 Come funziona l'applicazione?
 L'app è caratterizzata appunto da una ```searchBox```, costituita da un input in cui l'utente scrive del testo e da un bottone (un'icona freccia). Quando si preme il bottone, il sistema fa una chiamata all'API Teleport riportando come risposta in un div sottostante le informazioni inerenti alla città scelta. L'interfaccia è stata resa semplice e intuitiva: i dati che riportano i numeri, ```categories```, come il costo di vita, prezzo degli alloggi, sicurezza, etc., sono divisi in blocchi colorati per una migliore fruibilità e organizzazione, mentre il testo riguandante la ```description``` è mostrato come paragrafo semplice e al di sotto viene indicato il ```city-score```, cioè un punteggio assegnato alla città in base a tutti i dati sulla qualità della vita.
 
-![2](https://github.com/chiarabis/quality-life-app/assets/124071052/eca2e5ba-dd26-4a8f-b5b1-ecaf3a1d80ad)
-![3](https://github.com/chiarabis/quality-life-app/assets/124071052/823f6c40-9c72-41e0-a26d-dd85aea848df)
+![2](https://github.com/chiarabis/quality-life-app/assets/124071052/96d35d82-8090-41ed-91b2-cb471498a4bf)
+![3](https://github.com/chiarabis/quality-life-app/assets/124071052/19ca06b9-d989-429e-9ff1-15e625040c8a)
+
 
 ## Struttura del progetto
 Il progetto è organizzato nelle seguenti cartelle e file:
@@ -30,59 +31,88 @@ Il progetto è organizzato nelle seguenti cartelle e file:
 Il file con il codice di sviluppo contenuto nella cartella ```src``` contiene uno script in cui viene preso l'input inserito dall'utente e viene generato un evento dato dal click. Per fare la richiesta API è stato utilizzato il metodo ```fetch```.
 
 ```javascript
-function formatText(input) {
-    let result = "";
-    
-    for (let i = 0; i < input.length; i++) {
-        if (input[i] === " ") {
-            result += "-";
-        } else {
-            result += input[i];
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cityInfo = document.querySelector(".city-info");
+    const h2 = cityInfo.querySelector("h2");
+    const categoriesDiv = cityInfo.querySelector(".categories");
+    const description = cityInfo.querySelector(".description");
+    const cityScore = cityInfo.querySelector(".city-score");
+    categoriesDiv.innerHTML = "";
+
+    const apiUrl = `https://api.teleport.org/api/urban_areas/`;
+
+    async function search(cityInput) {
+        try {
+            const response = await fetch(apiUrl);
+
+            if (!response.ok) {
+                throw new Error("Error in the API request to search the cities");
+            }
+
+            const data = await response.json();
+            const cities = data._links["ua:item"];
+            //const foundCity = cities.find((city) => city.name.toLowerCase() === cityInput);
+            
+            let foundCity = null;
+
+            for (let i = 0; i < cities.length; i++) {
+                if (cities[i].name.toLowerCase() === cityInput) {
+                    foundCity = cities[i];
+                    break;
+                }
+            }
+
+            if (foundCity) {
+                return foundCity;
+            }
+            return alert("City not found or written incorrectly!");
+
+        } catch (error) {
+            console.log(error);
         }
     }
-    return result;
-}
 
-document.addEventListener("DOMContentLoaded", function() {
-    const searchButton = document.querySelector(".searchButton");
+    const searchButton = document.getElementById("searchButton");
 
-    searchButton.addEventListener("click", function() {
-        const inputCityName = document.querySelector(".searchInput").value;
-        const input = formatText(inputCityName.toLowerCase());
-        const apiUrl = `https://api.teleport.org/api/urban_areas/slug:${input}/scores/`;
+    searchButton.addEventListener("click", async function () {
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                const cityInfoDiv = document.querySelector(".cityInfo");
-                const h2 = cityInfoDiv.querySelector("h2");
-                const description = cityInfoDiv.querySelector(".description");
-                const cityScore = cityInfoDiv.querySelector(".city-score");
-                const categoriesDiv = cityInfoDiv.querySelector(".categories");
+        categoriesDiv.innerHTML = "";
+        description.innerHTML = "";
+        cityScore.textContent = "";
+        
+        const cityInput = document.getElementById("searchInput").value.toLowerCase();
+        let city = "";
 
-                categoriesDiv.innerHTML = "";
+        try {
+            const result = await search(cityInput);
+            city = result;
+        } catch (error) {
+            console.error(error);
+        }
 
-                data.categories.forEach(category => {
-                    const categoryDiv = document.createElement("div");
-                    categoryDiv.classList.add("category");
-                    categoryDiv.style.backgroundColor = category.color;
-                    categoryDiv.textContent = `${category.name}: ${category.score_out_of_10}`;
-                    categoriesDiv.appendChild(categoryDiv);
-                });
-
-                h2.textContent = input.toUpperCase();
-                description.innerHTML = data.summary;
-                cityScore.textContent = `City score: ${data.teleport_city_score.toFixed(2)}`;
-                
-            })
-            .catch(error => {
-                console.error(error);
+        fetch(`${city.href}scores/`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Error in the API request to search the scores");
+            }
+            return response.json();
+        })
+        .then((dataCity) => {
+            dataCity.categories.forEach((category) => {
+                const categoryDiv = document.createElement("div");
+                categoryDiv.classList.add("category");
+                categoryDiv.style.backgroundColor = category.color;
+                categoryDiv.textContent = `${category.name}: ${category.score_out_of_10}`;
+                categoriesDiv.appendChild(categoryDiv);
             });
+
+            h2.textContent = city.name;
+            description.innerHTML = dataCity.summary;
+            cityScore.textContent = `City score: ${dataCity.teleport_city_score.toFixed(2)}`;
         });
+    });
 });
 ```
-
-> **Nota:**
-> Le città italiane devono essere inserite in inglese!
 
 ## Link al progetto
