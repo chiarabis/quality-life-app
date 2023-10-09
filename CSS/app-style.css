@@ -39,7 +39,7 @@ html, body{
     color: #5dae69;
 }
 
-.searchInput {
+#searchInput {
     border: none;
     background: none;
     outline: none;
@@ -55,7 +55,7 @@ html, body{
     bottom: 15%;
 }
 
-.searchButton {
+#searchButton {
     float: right;
     width: 40px;
     display: flex;
@@ -73,11 +73,11 @@ html, body{
     right: 1%;
     bottom: 10%;
 }
-.searchButton:hover{
+#searchButton:hover{
     border: 3px solid #5dae69;
 }
 
-.cityInfo{
+.city-info{
     font-size: 1.2rem;
     padding: 10px;
     margin: auto;
@@ -86,8 +86,8 @@ html, body{
     box-sizing: border-box;
     overflow: auto;
 }
-.cityInfo h2{margin-bottom: 50px;}
-.cityInfo p{font-size: 1.2rem;}
+.city-info h2{margin-bottom: 50px;}
+.city-info p{font-size: 1.2rem;}
 
 .categories{padding: 20px 0;}
 .category{
@@ -97,7 +97,7 @@ html, body{
 }
 
 @media (max-width: 800px){
-    .cityInfo{width: 100%;}
+    .city-info{width: 100%;}
 }
 @media (max-width: 600px){
     .app-container{max-width: 100%;}
@@ -107,10 +107,10 @@ html, body{
 @media (max-width: 380px){
     .app-container h1{font-size: 1.6rem;}
     .app-container span{font-size: 1rem;}
-    .cityInfo h2{
+    .city-info h2{
         font-size: 1.3rem;
         margin-bottom: 30px;
     }
-    .cityInfo p{font-size: 1rem;}
+    .city-info p{font-size: 1rem;}
     .category{font-size: 1rem;}
 }
