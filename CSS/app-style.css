@@ -76,7 +76,9 @@ html, body{
 #searchButton:hover{
     border: 3px solid #5dae69;
 }
-
+#searchButton i:hover{
+    color: #5dae69;
+}
 .city-info{
     font-size: 1.2rem;
     padding: 10px;
