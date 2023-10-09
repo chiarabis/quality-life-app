@@ -116,3 +116,4 @@ document.addEventListener("DOMContentLoaded", function () {
 ```
 
 ## Link al progetto
+https://chiarabis.github.io/quality-life-app/
