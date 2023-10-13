@@ -7,9 +7,7 @@ Il progetto prevede di realizzare un'applicazione che dia informazioni su divers
 
 ***
 ### Cosa prevede il progetto
-L’applicazione deve essere composta da un semplice textbox tipo quello di Google per permettere all’utente di inserire il nome di una specifica città.
-Una volta che l’utente cliccherà su un apposito button, l’applicazione dovrà contattare le API del servizio esterno Teleport per ottenere la informazioni da visualizzare in pagina, dove los-angeles è la città inserita dall’utente.
-Una volta ricevuti i dati dal servizio esterno l’applicazione dovrà visualizzare in pagina le informazioni riguardanti le categorie, la descrizione e il city score della città.
+L’applicazione deve essere composta da un semplice textbox tipo quello di Google per permettere all’utente di inserire il nome di una specifica città. Una volta che l’utente cliccherà su un apposito button, l’applicazione dovrà contattare le API del servizio esterno Teleport per ottenere la informazioni riguardanti le categorie, la descrizione e il city score della città. I dati dovranno essere visualizzati in pagina.
 
 ### Utilizzo
 Come funziona l'applicazione?
